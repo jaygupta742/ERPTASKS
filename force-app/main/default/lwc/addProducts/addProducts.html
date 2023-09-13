@@ -1,0 +1,61 @@
+<template>
+    <lightning-quick-action-panel header="Opportunity Line Item">
+    <div if:true={datatable} >
+        <div class="slds-align_absolute-center  slds-gutters" style="margin-bottom: 10px;">
+            <div class="slds-col">
+                <lightning-input label="Product Name" onchange={filtername}></lightning-input>
+            </div>
+            <div class="slds-col">
+                <lightning-input label="Product SKU" onchange={filtersku}></lightning-input>
+            </div>
+            <div class="slds-col">
+                <lightning-combobox label="Product Type" options={options} onchange={filtertype} value={value}></lightning-combobox>
+            </div>
+            <div class="slds-col" style="margin-top: 1.8%;">
+                <lightning-button-icon icon-name="utility:preview" alternative-text="Delete" class="slds-m-left_xx-small" title="Delete" onclick={showall}></lightning-button-icon>
+            </div>
+            <div class="slds-col" style="margin-top: 1.8%;">
+            </div>
+        </div>
+        <lightning-datatable
+        data-id="datatable"
+        selected-rows={selectedrowsnew}
+        key-field="Product2Id"
+        data={filtereditems}
+        columns={columns}
+        onrowselection={onRowSelection}>
+        </lightning-datatable>
+    </div>
+    <div if:true={selecteddatatable}>
+        <lightning-datatable
+        key-field="Product2Id"
+        data={data1}
+        columns={columns1}
+        oncellchange={cellchanged}
+        draft-values={draftValues}
+        suppress-bottom-bar="true"
+        hide-checkbox-column="true"
+        >
+        </lightning-datatable>
+    </div>
+    <div class="slds-is-relative" lwc:if={spinner}>
+        <div class="demo-only demo-only_viewport" style="height:10rem;position:relative">
+            <div role="status" class="slds-spinner slds-spinner_medium">
+              <span class="slds-assistive-text">Loading</span>
+              <div class="slds-spinner__dot-a"></div>
+              <div class="slds-spinner__dot-b"></div>
+            </div>
+          </div>
+    </div>
+    <div slot="footer">
+        <div lwc:if={nextstep}>
+            <button class="slds-button slds-button_brand" onclick={closemodel}>Close</button>
+            <button class="slds-button slds-button_brand" onclick={getselectedproducts}>Next</button>
+        </div>
+        <div lwc:else>
+            <button class="slds-button slds-button_brand" onclick={closemodel}>Close</button>
+            <button class="slds-button slds-button_brand" onclick={handlesave}>Save</button>
+        </div>
+    </div>
+</lightning-quick-action-panel>
+</template>

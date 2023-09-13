@@ -1,0 +1,17 @@
+<template>
+<div>
+    <template for:each={data} for:item="Looper">
+        <lightning-layout key={Looper.Vegetarian} class="singleitem">
+            <lightning-layout-item class="div-block">
+                <img class="imagetag" src={Looper.image}/>
+            </lightning-layout-item>
+            <lightning-layout>
+                <lightning-layout-item class="insidesingleitem">
+                   <lightning-layout-item>Title : </lightning-layout-item>
+                  <lightning-layout-item>{Looper.title}</lightning-layout-item>
+                </lightning-layout-item>
+            </lightning-layout>
+        </lightning-layout>
+    </template>
+</div>
+</template>

@@ -1,0 +1,13 @@
+.singleitem{
+    padding: 2%;
+    margin: 0px 5rem 3rem 5rem;
+    border: 2px solid grey ;
+    border-radius: 25px;
+}
+.insidesingleitem{
+    margin-left: 1rem;
+}
+.imagetag{
+    border: 2px solid black;
+    border-radius: 2%;
+}
